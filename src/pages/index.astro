@@ -1,36 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import HeroImage from "../assets/hero-image.jpg";
+import HeroImage from "../components/HeroImage.astro";
+import image from "../assets/hero-image.jpg";
 ---
 
 <Layout>
-  <section class="relative bg-gray-800 h-screen">
-    <div class="absolute inset-0">
-      <img
-        src={HeroImage.src}
-        alt="Hero Image"
-        class="w-full h-full object-cover object-top"
-      />
-      <div class="absolute inset-0 bg-red-300 opacity-30"></div>
-    </div>
-    <div
-      class="relative flex flex-col items-center justify-center h-full max-w-7xl mx-auto py-24 px-6 text-center"
+  <HeroImage src={image.src}>
+    <h1
+      class="font-quicksand text-4xl font-extrabold text-white sm:text-5xl md:text-7xl"
     >
-      <h1 class="font-quicksand text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
-        Hello!
-      </h1>
-      <p class="mt-6 text-md lg:text-lg text-black font-bold">
-        ここにサブタイトルや説明文を追加します。
-      </p>
-      <div class="absolute bottom-10 left-0 right-0 text-center">
-        <p class="font-quicksand text-white">Scroll down</p>
-      </div>
-    </div>
-  </section>
+      Hello!
+    </h1>
+    <p class="mt-6 text-md lg:text-lg text-black font-bold">
+      ここにサブタイトルや説明文を追加します!
+    </p>
+  </HeroImage>
   <!-- Start Generation Here -->
   <section class="bg-white py-12">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="font-quicksand text-3xl font-bold text-gray-800 text-center">Blog</h2>
+      <h2 class="font-quicksand text-3xl font-bold text-gray-800 text-center">
+        Blog
+      </h2>
       <div class="mt-6 text-center">
         <p class="text-gray-600">最新のブログ記事をチェックしてください！</p>
       </div>
@@ -63,7 +53,9 @@ import HeroImage from "../assets/hero-image.jpg";
   <!-- Start Generation Here -->
   <section class="bg-gray-100 py-12">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="font-quicksand text-3xl font-bold text-gray-800 text-center">Products</h2>
+      <h2 class="font-quicksand text-3xl font-bold text-gray-800 text-center">
+        Products
+      </h2>
       <div class="mt-6 text-center">
         <p class="text-gray-600">最新のブログ記事をチェックしてください！</p>
       </div>
