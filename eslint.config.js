@@ -1,7 +1,7 @@
 import eslintPluginAstro from "eslint-plugin-astro";
 import typescriptParser from "@typescript-eslint/parser";
 import eslintConfigPrettier from "eslint-config-prettier";
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import eslintPluginPrettierRecommended, { languageOptions } from "eslint-plugin-prettier/recommended";
 
 export default [
   {
@@ -21,6 +21,12 @@ export default [
     ],
   },
   ...eslintPluginAstro.configs.recommended,
+  {
+    files: ["src/**/*.astro"],
+    languageOptions: {
+      parser: "astro",
+    },
+  },
   {
     files: ["src/**/*.{ts,tsx,jsx}"],
     languageOptions: {
