@@ -3,12 +3,12 @@ import { Icon } from "astro-icon/components";
 const { src } = Astro.props;
 ---
 
-<section class="relative bg-gray-800 h-screen">
+<section class="relative bg-gray-300 h-screen">
   <div class="absolute inset-0">
     <img
       src={src}
       alt="Hero Image"
-      class="w-full h-full object-cover object-top"
+      class="hero-image w-full h-full object-cover object-top opacity-0 transition-opacity duration-100"
     />
     <div class="absolute inset-0 bg-red-300 opacity-30"></div>
   </div>
@@ -37,3 +37,20 @@ const { src } = Astro.props;
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const heroSection = document.querySelector(".hero-image");
+    heroSection?.classList.add("opacity-0");
+    setTimeout(() => {
+      heroSection?.classList.remove("opacity-0");
+      heroSection?.classList.add("opacity-100");
+    }, 100);
+  });
+</script>
+
+<style>
+  .hero-image {
+    transition: opacity 2.2s ease-in-out;
+  }
+</style>
