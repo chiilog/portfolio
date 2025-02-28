@@ -1,7 +1,7 @@
 import eslintPluginAstro from "eslint-plugin-astro";
 import typescriptParser from "@typescript-eslint/parser";
+import astroParser from "astro-eslint-parser";
 import eslintConfigPrettier from "eslint-config-prettier";
-import eslintPluginPrettierRecommended, { languageOptions } from "eslint-plugin-prettier/recommended";
 
 export default [
   {
@@ -24,7 +24,14 @@ export default [
   {
     files: ["src/**/*.astro"],
     languageOptions: {
-      parser: "astro",
+      parser: astroParser,
+      parserOptions: {
+        parser: typescriptParser,
+        extraFileExtensions: [".astro"],
+      },
+    },
+    rules: {
+      "prettier/prettier": "off",
     },
   },
   {
@@ -34,5 +41,4 @@ export default [
     },
   },
   eslintConfigPrettier,
-  eslintPluginPrettierRecommended,
 ];
