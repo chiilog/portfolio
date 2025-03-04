@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import HeroImage from "../components/HeroImage.astro";
 import Section from "../components/Section.astro";
+import ZennArticles from "../components/ZennArticles.astro";
 import image from "../assets/hero-image.jpg";
 ---
 
@@ -21,21 +22,10 @@ import image from "../assets/hero-image.jpg";
     bgColor="bg-white"
     title="Blog"
     titleColor="text-salmon"
-    subtitle="最新のブログ記事をチェックしてください！"
+    subtitle="基本的にZennで記事を書いています。ほぼWordPressのあれやこれ"
   >
-    <div class="mt-8 space-y-0">
-      <article class="border-b border-gray-200">
-        <a href="#" class="group block py-6 px-4 transition-colors duration-500 bg-white hover:bg-white-smoke">
-          <h3 class="text-xl font-semibold">ブログ記事タイトル1</h3>
-          <p class="mt-2 text-gray-600 text-sm">
-            ここには記事の概要や説明文が入ります。読者が興味を持つような内容を簡潔に紹介します。
-          </p>
-          <div class="mt-4 flex justify-between items-center">
-            <span class="text-sm text-gray-500">2023年10月15日</span>
-            <span class="text-salmon group-hover:text-contessa font-medium transition-colors duration-300">続きを読む</span>
-          </div>
-        </a>
-      </article>
+    <div class="mt-8">
+      <ZennArticles username="chiilog" limit={3} />
     </div>
   </Section>
 
