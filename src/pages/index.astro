@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import HeroImage from "../components/HeroImage.astro";
 import Section from "../components/Section.astro";
 import ZennArticles from "../components/ZennArticles.astro";
+import ProductCard from "../components/ProductCard.astro";
 import image from "../assets/hero-image.jpg";
 ---
 
@@ -45,18 +46,24 @@ import image from "../assets/hero-image.jpg";
     bgColor="bg-white-smoke"
     title="Products"
     titleColor="text-contessa"
-    subtitle="最新のブログ記事をチェックしてください！"
+    subtitle="主にWordPressプラグイン。時々練習用に作って公開したもの"
   >
     <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <article class="bg-white hover:bg-white-smoke transition-colors duration-300 rounded-lg shadow">
-        <a href="#" class="block p-6">
-          <h3 class="text-xl font-semibold">プロダクト1</h3>
-          <p class="mt-2 text-gray-600">
-            このプロダクトは、ユーザーのニーズに応えるために設計されています。
-          </p>
-          <span class="mt-4 inline-block text-salmon hover:text-contessa">詳細を見る</span>
-        </a>
-      </article>
+      <ProductCard
+        title="冷蔵庫マネージャー"
+        description="Cursorをつかってみよう！ということで、前からほしいと思っていた冷蔵庫の中身を管理するアプリをつくらせてみました。<br>シンプルに買ったものを登録して、消費期限までの期日を可視化しています。"
+        link="https://chiilog.github.io/reizouko-manager/"
+      />
+      <ProductCard
+        title="Query Has Results"
+        description="WordPressのクエリーループ内で使える、クエリーがあるときだけ内容を表示できるプラグインです。クエリーがあるときだけタイトルを表示したいというケースがちらほらあるので作成しました。"
+        link="https://github.com/hamworks/query-has-results"
+      />
+      <ProductCard
+        title="Simple Definition List Blocks"
+        description="WordPressのブロックエディタで定義リストを作成できるプラグインです。<br>デフォルトのブロックエディタでは定義リストがないのですが、dlを使いたいケースがあったのでつくりました。"
+        link="https://wordpress.org/plugins/simple-definition-list-blocks/"
+      />
     </div>
   </Section>
 
