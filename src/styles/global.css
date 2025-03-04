@@ -7,3 +7,9 @@
   --color-white-smoke: #fdeeed;
   --color-contessa: #c66961;
 }
+
+body {
+  -webkit-text-size-adjust: 100%;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
