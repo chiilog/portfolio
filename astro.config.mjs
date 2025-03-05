@@ -7,9 +7,10 @@ import react from "@astrojs/react";
 
 import icon from "astro-icon";
 
+// https://astro.build/config
 import vercel from "@astrojs/vercel";
 
-// https://astro.build/config
+// Use the Vercel adapter for deployment to Vercel
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
