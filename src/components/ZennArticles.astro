@@ -15,17 +15,9 @@ interface Props {
   username: string;
   /** 表示する記事の最大数 */
   limit?: number;
-  /** キャッシュ時間（秒） */
-  cacheDuration?: number;
 }
 
-// キャッシュ時間は12時間
-const { username, limit = 5, cacheDuration = 43200 } = Astro.props;
-
-// キャッシュヘッダーを設定（オプション）
-if (Astro.response.headers && cacheDuration > 0) {
-  Astro.response.headers.set('Cache-Control', `s-maxage=${cacheDuration}, stale-while-revalidate=${cacheDuration}`);
-}
+const { username, limit = 5 } = Astro.props;
 
 // ZennのRSSフィードから記事を取得（リクエスト時に実行される）
 const articles = await getZennArticles(username, limit);

@@ -6,6 +6,14 @@ import ZennArticles from "../components/ZennArticles.astro";
 import ProductCard from "../components/ProductCard.astro";
 import ResumeItem from "../components/ResumeItem.astro";
 import TechnologyStack from "../components/TechnologyStack.astro";
+
+// キャッシュ時間は12時間（43200秒）
+const cacheDuration = 43200;
+
+// キャッシュヘッダーを設定
+if (Astro.response.headers) {
+  Astro.response.headers.set('Cache-Control', `s-maxage=${cacheDuration}, stale-while-revalidate=${cacheDuration}`);
+}
 ---
 
 <Layout title="ポートフォリオ｜Chiaki Okamoto">
