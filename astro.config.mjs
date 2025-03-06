@@ -8,7 +8,7 @@ import react from "@astrojs/react";
 import icon from "astro-icon";
 
 // https://astro.build/config
-import vercel from "@astrojs/vercel";
+import vercel from "@astrojs/vercel/serverless";
 
 // Use the Vercel adapter for deployment to Vercel
 export default defineConfig({
@@ -17,5 +17,6 @@ export default defineConfig({
   },
 
   integrations: [react(), icon()],
+  output: 'server',
   adapter: vercel()
 });

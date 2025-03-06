@@ -5,6 +5,7 @@
  * @description
  * ZennのRSSフィードから取得した記事を一覧表示します。
  * 各記事にはタイトル、概要、公開日が表示され、クリックすると記事ページに遷移します。
+ * SSRモードで動的に記事を取得します。
  */
 
 import { getZennArticles, formatDate } from '../utils/zennRss';
@@ -14,11 +15,18 @@ interface Props {
   username: string;
   /** 表示する記事の最大数 */
   limit?: number;
+  /** キャッシュ時間（秒） */
+  cacheDuration?: number;
 }
 
-const { username, limit = 5 } = Astro.props;
+const { username, limit = 5, cacheDuration = 3600 } = Astro.props;
 
-// ZennのRSSフィードから記事を取得
+// キャッシュヘッダーを設定（オプション）
+if (Astro.response.headers && cacheDuration > 0) {
+  Astro.response.headers.set('Cache-Control', `s-maxage=${cacheDuration}, stale-while-revalidate`);
+}
+
+// ZennのRSSフィードから記事を取得（リクエスト時に実行される）
 const articles = await getZennArticles(username, limit);
 ---
 
