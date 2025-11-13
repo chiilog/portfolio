@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio - Chiaki Okamoto
 
-## Getting Started
+フロントエンド開発者 Chiaki Okamoto (chiilog) のポートフォリオサイト。
 
-First, run the development server:
+## 技術スタック
+
+- **Next.js 16.0.2** - App Router使用
+- **React 19.2.0** - Server Components & Client Components
+- **Turbopack** - デフォルトバンドラー
+- **Tailwind CSS 4.0** - スタイリング
+- **TypeScript** - 型安全性
+- **Vitest + React Testing Library** - テスト
+- **Google Analytics 4** - アクセス解析
+
+## 主な機能
+
+- ✅ Zenn記事のRSS連携（12時間キャッシュ）
+- ✅ レスポンシブデザイン
+- ✅ フェードインアニメーション
+- ✅ スムーススクロール
+- ✅ Google Analytics統合
+
+## 開発コマンド
+
+すべてのコマンドはルートディレクトリで実行します：
 
 ```bash
+# 依存関係のインストール
+npm install
+
+# 開発サーバーの起動（localhost:3000）
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# 本番用ビルド
+npm run build
+
+# 本番サーバーの起動
+npm run start
+
+# リンター実行
+npm run lint
+
+# コードフォーマット
+npm run format
+
+# テスト実行
+npm test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## プロジェクト構造
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+/app                  # Next.js App Router
+  /layout.tsx         # ルートレイアウト（Google Analytics設定）
+  /page.tsx           # メインページ
+  /globals.css        # グローバルスタイル（Tailwindカスタムテーマ）
+/components           # Reactコンポーネント
+  /HeroImage.tsx      # ヒーロー画像（Client Component）
+  /Section.tsx        # セクションラッパー
+  /ZennArticles.tsx   # Zenn記事一覧（Server Component）
+  /ProductCard.tsx    # プロダクトカード
+  /ResumeItem.tsx     # 職歴アイテム
+  /TechnologyStack.tsx # 技術スタックバッジ
+/lib                  # ユーティリティ
+  /zennRss.ts         # Zenn RSS取得
+/public               # 静的ファイル
+/docs                 # ドキュメント
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Vercelへのデプロイ
 
-## Learn More
+詳細は [docs/vercel-deployment.md](./docs/vercel-deployment.md) を参照してください。
 
-To learn more about Next.js, take a look at the following resources:
+### クイックスタート
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. GitHubリポジトリにプッシュ
+2. [Vercel](https://vercel.com) にログイン
+3. 「Add New...」→「Project」からリポジトリを選択
+4. 「Deploy」をクリック
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+自動的にビルド・デプロイが実行されます。
 
-## Deploy on Vercel
+## 環境変数
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+現在、環境変数は使用していません（Google Analytics IDはハードコード済み）。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+必要に応じて `.env.example` を `.env` にコピーして編集してください。
+
+## テスト戦略
+
+- **ユニットテスト**: Vitest + React Testing Library
+  - シンプルなServer Components
+  - Client Components
+  - ユーティリティ関数
+
+詳細は [CLAUDE.md](./CLAUDE.md) を参照してください。
+
+## ライセンス
+
+© 2025 Chiaki Okamoto. All rights reserved.
+
+## 参考リンク
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Vercel Documentation](https://vercel.com/docs)
