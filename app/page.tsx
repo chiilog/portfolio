@@ -1,0 +1,217 @@
+import HeroImage from "../components/HeroImage";
+import Section from "../components/Section";
+import ZennArticles from "../components/ZennArticles";
+import ProductCard from "../components/ProductCard";
+import ResumeItem from "../components/ResumeItem";
+import TechnologyStack from "../components/TechnologyStack";
+
+// キャッシュ時間は12時間（43200秒）
+export const revalidate = 43200;
+
+export default function Home() {
+  return (
+    <>
+      <HeroImage src="/hero-image.jpg">
+        <h1 className="font-quicksand text-4xl font-extrabold text-white sm:text-5xl md:text-7xl">
+          Chiaki Okamoto
+        </h1>
+        <p className="font-quicksand mt-6 text-md lg:text-lg text-white font-bold">
+          Welcome to my portfolio!
+        </p>
+      </HeroImage>
+
+      <Section
+        id="about"
+        bgColor="bg-white-smoke"
+        title="Profile"
+        titleColor="text-contessa"
+        subtitle="私について"
+      >
+        <div className="mt-8 max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-8 items-center">
+            <div className="w-full md:w-1/3">
+              <img
+                src="/profile.jpg"
+                alt="岡本千秋のプロフィール画像"
+                className="w-full h-auto rounded-lg shadow-lg"
+                width="300"
+                height="300"
+              />
+            </div>
+            <div className="w-full md:w-2/3">
+              <div className="prose prose-lg">
+                <div className="flex flex-col gap-2 mb-4 text-contessa">
+                  <h3 className="text-2xl font-bold">岡本(小原) 千秋</h3>
+                  <p className="font-quicksand font-bold">Okamoto Chiaki (Obara Chiaki)</p>
+                </div>
+                <p className="text-gray-700">
+                  主にWordPressのテーマやプラグインの開発を担当しています。<br />
+                  カスタムブロック開発の兼ね合いで、少しだけReactも触っています。
+                </p>
+                <div className="mt-4">
+                  <p className="text-gray-700 mb-3 font-bold">技術スタック：</p>
+                  <div className="flex flex-wrap gap-2">
+                    <TechnologyStack level={1}>WordPress</TechnologyStack>
+                    <TechnologyStack level={1}>HTML</TechnologyStack>
+                    <TechnologyStack level={1}>CSS</TechnologyStack>
+                    <TechnologyStack level={1}>Tailwind CSS</TechnologyStack>
+                    <TechnologyStack level={2}>React</TechnologyStack>
+                    <TechnologyStack level={2}>JavaScript</TechnologyStack>
+                    <TechnologyStack level={2}>TypeScript</TechnologyStack>
+                  </div>
+                </div>
+                <div className="mt-6">
+                  <p className="text-gray-700 mb-3 font-bold">SNS：</p>
+                  <div className="flex gap-4 items-center">
+                    <a
+                      href="https://x.com/chiilogweb"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Twitter"
+                    >
+                      <img src="/icon-x.png" alt="X" className="w-6 h-6" />
+                    </a>
+                    <a
+                      href="https://github.com/chiilog"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="GitHub"
+                    >
+                      <img src="/icon-github.png" alt="GitHub" className="w-7 h-7" />
+                    </a>
+                    <a
+                      href="https://www.facebook.com/chiilog"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Facebook"
+                    >
+                      <img src="/icon-facebook.png" alt="Facebook" className="w-7 h-7" />
+                    </a>
+                  </div>
+                </div>
+                <div className="mt-6">
+                  <p className="text-gray-700 mb-3 font-bold">資格：</p>
+                  <div className="flex gap-4 items-center">
+                    <p>ITパスポート</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section
+        bgColor="bg-white"
+        title="Blog"
+        titleColor="text-salmon"
+        subtitle="基本的にZennで記事を書いています。ほぼWordPressのあれやこれ"
+      >
+        <div className="mt-8">
+          <ZennArticles username="chiilog" limit={3} />
+        </div>
+        <div className="mt-6">
+          <div className="flex justify-center">
+            <a
+              href="https://zenn.dev/chiilog"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-4 px-6 py-3 bg-salmon hover:bg-contessa text-white font-medium rounded-lg transition-colors duration-300 text-center"
+            >
+              すべての記事を見る
+            </a>
+          </div>
+        </div>
+      </Section>
+
+      <Section
+        bgColor="bg-white-smoke"
+        title="Products"
+        titleColor="text-contessa"
+        subtitle="主にWordPressプラグイン。時々練習用に作って公開したもの"
+      >
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ProductCard
+            title="保活手帳"
+            description="保活中にあとからわかりやすく見返せるようなアプリがほしくて開発しました。Claude Codeを用いて開発しました。"
+            link="https://hokatsu-techo.com/"
+          />
+          <ProductCard
+            title="冷蔵庫マネージャー"
+            description="Cursorをつかってみよう！ということで、前からほしいと思っていた冷蔵庫の中身を管理するアプリをつくらせてみました。<br>シンプルに買ったものを登録して、消費期限までの期日を可視化しています。"
+            link="https://chiilog.github.io/reizouko-manager/"
+          />
+          <ProductCard
+            title="Query Has Results"
+            description="WordPressのクエリーループ内で使える、クエリーがあるときだけ内容を表示できるプラグインです。クエリーがあるときだけタイトルを表示したいというケースがちらほらあるので作成しました。"
+            link="https://github.com/hamworks/query-has-results"
+          />
+          <ProductCard
+            title="Simple Definition List Blocks"
+            description="WordPressのブロックエディタで定義リストを作成できるプラグインです。<br>デフォルトのブロックエディタでは定義リストがないのですが、dlを使いたいケースがあったのでつくりました。"
+            link="https://wordpress.org/plugins/simple-definition-list-blocks/"
+          />
+        </div>
+      </Section>
+
+      <Section
+        bgColor="bg-white"
+        title="Resume"
+        titleColor="text-salmon"
+        subtitle="これまでの経験と実績をご紹介します"
+      >
+        <div className="mt-12">
+          <ResumeItem
+            period="2018年 - 現在"
+            company="株式会社HAMWORKS"
+            position="フロントエンドデベロッパー"
+            responsibilities={[
+              "WordPressを使用したサイトの構築（ブロックテーマ作成・プラグイン作成）",
+              "静的HTMLサイトの構築"
+            ]}
+          />
+
+          <ResumeItem
+            period="2017年 - 2018年"
+            company="株式会社マキシム"
+            position="Webデザイナー"
+            responsibilities={[
+              "公式ECサイトのリニューアル（EC-CUBE）",
+              "週末イベントのLPページ作成",
+              "特集ページの作成"
+            ]}
+          />
+
+          <ResumeItem
+            period="2012年 - 2017年"
+            company="株式会社TAM"
+            position="フロントエンドデベロッパー"
+            responsibilities={[
+              "静的サイトの構築",
+              "WordPressを使用したサイトの構築（クラシックテーマ作成）"
+            ]}
+          />
+
+          <ResumeItem
+            period="2008年 - 2012年"
+            company="株式会社アンクシステムズ"
+            position="フロントエンドデベロッパー"
+            responsibilities={[
+              "Action Script3.0を使用したFlashコンテンツの開発",
+              "静的サイトの構築",
+              "WordPressを使用したサイトの構築（クラシックテーマ作成）"
+            ]}
+          />
+        </div>
+      </Section>
+
+      <footer className="bg-contessa py-6">
+        <div className="max-w-7xl mx-auto px-4">
+          <p className="text-center text-white text-sm">
+            © {new Date().getFullYear()} Chiaki Okamoto. All rights reserved.
+          </p>
+        </div>
+      </footer>
+    </>
+  );
+}
