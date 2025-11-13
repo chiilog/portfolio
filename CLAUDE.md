@@ -37,6 +37,9 @@ npm run start
 
 # リンター実行（ESLint）
 npm run lint
+
+# テスト実行（Vitest）
+npm test
 ```
 
 ## アーキテクチャ
@@ -49,5 +52,24 @@ npm run lint
 - **Vercel** デプロイメント用（Next.jsネイティブサポート）
 - **Tailwind CSS 4.0** スタイリング用
 - **TypeScript** 型安全性のため
+- **Vitest + React Testing Library** ユニットテスト用
 - **Google Fonts** Quicksandフォント読み込み
 - **Google Analytics 4** トラッキング統合
+
+### テスト戦略
+
+#### ユニットテスト（Vitest + React Testing Library）
+- **テストファイルの配置**: コンポーネントと同じディレクトリにコロケーション
+  - 例: `components/Section.tsx` → `components/Section.test.tsx`
+  - 例: `lib/zennRss.ts` → `lib/zennRss.test.ts`
+- **対象**:
+  - シンプルなServer Components（async不使用）
+  - Client Components
+  - ユーティリティ関数
+- **制限**: Async Server Componentsはサポートされていない（E2Eテスト推奨）
+
+#### E2Eテスト（将来追加予定）
+- **対象**:
+  - Async Server Components
+  - ページ全体のフロー
+  - 統合テスト
