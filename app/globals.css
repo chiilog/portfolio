@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --font-quicksand: "Quicksand", serif;
+  --color-salmon: #f88379;
+  --color-white-smoke: #fdeeed;
+  --color-contessa: #c66961;
+}
+
+html {
+  scroll-behavior: smooth;
+}
