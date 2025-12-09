@@ -1,4 +1,3 @@
----
 /**
  * セクションコンポーネント
  *
@@ -16,21 +15,23 @@ interface Props {
   title: string;
   titleColor: string;
   subtitle?: string;
+  children: React.ReactNode;
 }
 
-const { id, bgColor, title, titleColor, subtitle } = Astro.props;
----
-
-<section id={id} class={`${bgColor} py-14 md:py-20`}>
-  <div class="max-w-7xl mx-auto px-4">
-    <h2 class={`font-quicksand text-3xl lg:text-4xl font-bold ${titleColor} text-center`}>
-      {title}
-    </h2>
-    {subtitle && (
-      <div class="mt-2 text-center font-bold">
-        <p class="text-gray-600">{subtitle}</p>
+export default function Section({ id, bgColor, title, titleColor, subtitle, children }: Props) {
+  return (
+    <section id={id} className={`${bgColor} py-14 md:py-20`}>
+      <div className="max-w-7xl mx-auto px-4">
+        <h2 className={`font-quicksand text-3xl lg:text-4xl font-bold ${titleColor} text-center`}>
+          {title}
+        </h2>
+        {subtitle && (
+          <div className="mt-2 text-center font-bold">
+            <p className="text-gray-600">{subtitle}</p>
+          </div>
+        )}
+        {children}
       </div>
-    )}
-    <slot />
-  </div>
-</section>
+    </section>
+  );
+}

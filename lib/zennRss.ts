@@ -34,7 +34,14 @@ export type ZennArticle = {
 export async function getZennArticles(username: string, limit: number = 5): Promise<ZennArticle[]> {
   try {
     const parser = new Parser();
-    const feed = await parser.parseURL(`https://zenn.dev/${username}/feed`);
+
+    // Next.jsのキャッシュ機能を活用してRSSフィードを取得（12時間キャッシュ）
+    const response = await fetch(`https://zenn.dev/${username}/feed`, {
+      next: { revalidate: 43200 }
+    } as RequestInit);
+
+    const feedText = await response.text();
+    const feed = await parser.parseString(feedText);
 
     // 記事を日付の新しい順にソート
     const articles = feed.items

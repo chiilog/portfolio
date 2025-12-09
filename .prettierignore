@@ -1,0 +1,24 @@
+# Dependencies
+node_modules
+
+# Next.js
+.next
+out
+
+# Build outputs
+dist
+build
+
+# Backup
+astro-backup
+
+# Misc
+*.log
+.DS_Store
+.env*.local
+coverage
+
+# Package manager
+pnpm-lock.yaml
+package-lock.json
+yarn.lock

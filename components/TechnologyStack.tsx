@@ -1,4 +1,3 @@
----
 /**
  * 技術スタックを表示するコンポーネント
  *
@@ -17,17 +16,19 @@ interface Props {
    * 技術の習熟度（1: 得意、2: それに次ぐ）
    */
   level: 1 | 2;
+  children: React.ReactNode;
 }
-
-const { level } = Astro.props;
 
 const getSkillClass = (level: number) => {
   return level === 1
     ? "px-3 py-1 bg-salmon text-white rounded-full text-sm"
     : "px-3 py-1 bg-white border border-salmon text-salmon rounded-full text-sm";
 };
----
 
-<span class={getSkillClass(level)}>
-  <slot />
-</span>
+export default function TechnologyStack({ level, children }: Props) {
+  return (
+    <span className={getSkillClass(level)}>
+      {children}
+    </span>
+  );
+}
